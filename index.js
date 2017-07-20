@@ -1,8 +1,15 @@
-console.log('hello')
+require("dotenv").load();
+const express = require("express");
+const api = require("./src/api");
+const app = express();
+const port = 8080;
 
-const http = require('http')
+app.get("/", (req, res) => {
+  res.send("welcome");
+});
 
-http.createServer((req, res) => {
-  console.log("got a response")
-  res.end("hello")
-}).listen(8080)
+app.use("/api", api);
+
+app.listen(port, () => {
+  console.log(`server is listening on ${port}. Ctrl-C to stop`);
+});
