@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const isAdmin = require("./isAdmin");
 
@@ -19,6 +20,7 @@ const Product = mongoose.model("Product", {
 const api = Router();
 module.exports = api;
 api.use(bodyParser.json());
+api.use(cors());
 
 /*
  * {username:...,password:...,product:{}}
